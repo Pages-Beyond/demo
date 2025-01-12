@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Nav Menu -->
+    <nav class="navbar fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="assets/pictures/artN.jpg" alt="Admin" class="admin-img me-2">
+                Admin
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="homeLink">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="Link">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" id="dropdownLink">
+                                Dropdown
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Sidebar on the left -->
+    <div class="d-flex" style="height: 100vh;">
+        <div class="bg-#5E4447 text-white p-3"
+            style="width: 200px; position: fixed; top: 80px; left: 0; bottom: 0; display: flex; flex-direction: column; justify-content: space-between;">
+            <ul class="nav flex-column" id="sidebar">
+                <li class="nav-item">
+                    <a class="nav-link text-white active" href="admin.html" id="bookLink">Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="users.html" id="userLink">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="requests.html" id="requestLink">Requests</a>
+                </li>
+            </ul>
+            <div class="mt-3" style="margin-top: auto;">
+                <img src="assets/pictures/Bookblast Official Logo.png"
+                    style="width: 50%; border-radius: 5px; margin-left: 10px;">
+            </div>
+        </div>
+
+        <!-- Main content area -->
+        <div class="container-fluid" style="margin-left: 250px; padding-top: 80px;">
+            <h2>Books</h2>
+
+            <div class="container"
+                style="background-color: #9B775D; height: 450px; width: 850px; position: absolute; left: 10; top: 10;">
+                <div class="row">
+                    <div class="col">
+                        <form action="#" method="post">
+                            <div class="mb-3 p-4">
+                                <label for="title" class="form-label text-white">Title</label>
+                                <input type="text" class="form-control" id="title" name="title"
+                                    style="width: 70%; background-color: transparent; border: 2px solid #ffffff; margin-top: 10px; height: 55px;"
+                                    required>
+                            </div>
+                            <div class="p-4" style="margin-top: -30px;">
+                                <label for="author" class="form-label text-white">Author</label>
+                                <input type="text" class="form-control" id="author" name="author"
+                                    style="width: 70%; background-color: transparent; border: 2px solid #ffffff; margin-top: 10px; height: 55px;"
+                                    required>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+                crossorigin="anonymous"></script>
+
+            <script>
+                // Get all the sidebar links
+                const bookLink = document.getElementById('bookLink');
+                const userLink = document.getElementById('userLink');
+                const requestLink = document.getElementById('requestLink');
+
+                // Get nav menu links
+                const homeLink = document.getElementById('homeLink');
+                const link = document.getElementById('link');
+                const dropdownLink = document.getElementById('dropdownLink');
+
+                // Function to reset active state for sidebar links
+                function resetSidebarActiveLinks() {
+                    bookLink.classList.remove('active');
+                    userLink.classList.remove('active');
+                    requestLink.classList.remove('active');
+                }
+
+                // Function to reset active state for nav menu links
+                function resetNavbarActiveLinks() {
+                    homeLink.classList.remove('active');
+                    dropdownLink.classList.remove('active');
+                }
+
+                // Add click event listeners to sidebar links
+                bookLink.addEventListener('click', function () {
+                    resetSidebarActiveLinks();
+                    bookLink.classList.add('active');
+                    document.querySelector('h2').innerText = "Books"; // Change content
+                });
+
+                userLink.addEventListener('click', function () {
+                    resetSidebarActiveLinks();
+                    userLink.classList.add('active');
+                    document.querySelector('h2').innerText = "Users"; // Change content
+                });
+
+                requestLink.addEventListener('click', function () {
+                    resetSidebarActiveLinks();
+                    requestLink.classList.add('active');
+                    document.querySelector('h2').innerText = "Requests"; // Change content
+                });
+
+                // Add click event listeners to nav menu links
+                homeLink.addEventListener('click', function () {
+                    resetNavbarActiveLinks();
+                    homeLink.classList.add('active');
+                });
+
+                dropdownLink.addEventListener('click', function () {
+                    resetNavbarActiveLinks();
+                    dropdownLink.classList.add('active');
+                });
+            </script>
+
+</body>
+
+</html>
